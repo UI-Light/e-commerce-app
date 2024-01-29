@@ -162,34 +162,52 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: Colors.blue,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.category,
-                color: Colors.grey,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.grey,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: Colors.grey,
-              ),
-              label: '')
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //         icon: IconButton(
+      //           icon: const Icon(
+      //             Icons.home,
+      //             color: Colors.blue,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //         label: ''),
+      //     BottomNavigationBarItem(
+      //         icon: IconButton(
+      //           icon: const Icon(
+      //             Icons.category,
+      //             color: Colors.grey,
+      //           ),
+      //           onPressed: () {
+      //             Navigator.of(context).push(
+      //               MaterialPageRoute(
+      //                 builder: (context) => const CategoryPage(),
+      //               ),
+      //             );
+      //           },
+      //         ),
+      //         label: ''),
+      //     BottomNavigationBarItem(
+      //         icon: IconButton(
+      //           icon: const Icon(
+      //             Icons.favorite,
+      //             color: Colors.grey,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //         label: ''),
+      //     BottomNavigationBarItem(
+      //         icon: IconButton(
+      //           icon: const Icon(
+      //             Icons.person,
+      //             color: Colors.grey,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //         label: '')
+      //   ],
+      // ),
     );
   }
 }

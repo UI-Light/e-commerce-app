@@ -35,8 +35,8 @@ class _CategoryGridState extends State<CategoryGrid> {
           const SizedBox(height: 8.0),
           Text(
             widget.category,
-            maxLines: 1,
-            overflow: TextOverflow.clip,
+            // maxLines: 1,
+            // overflow: TextOverflow.clip,
             style: const TextStyle(
               fontSize: 12,
             ),
