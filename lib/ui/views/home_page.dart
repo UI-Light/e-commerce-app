@@ -115,13 +115,24 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       ProductsGrid(
-                          productName: 'Garnier Facewash', price: '\$200'),
+                          productName: 'Garnier Facewash',
+                          price: '\$200',
+                          image: ''),
                       ProductsGrid(
-                          productName: 'Shibaki Cream', price: '\$1500'),
+                        productName: 'Shibaki Cream',
+                        price: '\$1500',
+                        image: '',
+                      ),
                       ProductsGrid(
-                          productName: 'Shibaki Cream', price: '\$1500'),
+                        productName: 'Shibaki Cream',
+                        price: '\$1500',
+                        image: '',
+                      ),
                       ProductsGrid(
-                          productName: 'Garnier Facewash', price: '\$200'),
+                        productName: 'Garnier Facewash',
+                        price: '\$200',
+                        image: '',
+                      ),
                     ],
                   ),
                 ),
@@ -148,12 +159,22 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       ProductsGrid(
-                          productName: 'Laneige lip mask', price: '\$600'),
-                      ProductsGrid(productName: 'Dove Combo', price: '\$3000'),
+                        productName: 'Laneige lip mask',
+                        price: '\$600',
+                        image: '',
+                      ),
                       ProductsGrid(
-                          productName: 'Shibaki Cream', price: '\$1500'),
+                          productName: 'Dove Combo',
+                          price: '\$3000',
+                          image: ''),
                       ProductsGrid(
-                          productName: 'Garnier Facewash', price: '\$200'),
+                          productName: 'Shibaki Cream',
+                          price: '\$1500',
+                          image: ''),
+                      ProductsGrid(
+                          productName: 'Garnier Facewash',
+                          price: '\$200',
+                          image: ""),
                     ],
                   ),
                 ),

@@ -77,12 +77,18 @@ class _CategoryPageState extends State<CategoryPage> {
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const ProductDetailsPage())),
                     child: const ProductsGrid(
-                        productName: "Garnier Facewash", price: "\$300"),
+                        productName: "Garnier Facewash",
+                        price: "\$300",
+                        image: 'lipstick.png'),
                   ),
                   const ProductsGrid(
-                      productName: "Garnier Facewash", price: "\$300"),
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'skincare.png'),
                   const ProductsGrid(
-                      productName: "Garnier Facewash", price: "\$300"),
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'makeup.png'),
                 ],
               ),
             ),

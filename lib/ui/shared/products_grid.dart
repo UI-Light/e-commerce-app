@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class ProductsGrid extends StatefulWidget {
   final String productName;
   final String price;
+  final String image;
   const ProductsGrid(
-      {super.key, required this.productName, required this.price});
+      {super.key,
+      required this.productName,
+      required this.price,
+      required this.image});
 
   @override
   State<ProductsGrid> createState() => _ProductsGridState();
@@ -24,10 +28,10 @@ class _ProductsGridState extends State<ProductsGrid> {
               borderRadius: BorderRadius.circular(8),
               color: const Color(0xFFD1EBF4),
               //D1EBF4 //A4D6E7
-              // image: DecorationImage(
-              //   image: AssetImage(widget.image),
-              //   fit: BoxFit.cover,
-              // ),
+              image: DecorationImage(
+                image: AssetImage(widget.image),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(height: 8.0),
