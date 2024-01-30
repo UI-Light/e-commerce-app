@@ -162,52 +162,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.home,
-      //             color: Colors.blue,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.category,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {
-      //             Navigator.of(context).push(
-      //               MaterialPageRoute(
-      //                 builder: (context) => const CategoryPage(),
-      //               ),
-      //             );
-      //           },
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.favorite,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.person,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: '')
-      //   ],
-      // ),
     );
   }
 }

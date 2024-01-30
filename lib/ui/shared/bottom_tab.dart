@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/views/category_page.dart';
 import 'package:shopping_app/ui/views/home_page.dart';
-import 'package:shopping_app/ui/views/profile_page.dart';
-import 'package:shopping_app/ui/views/saved_page.dart';
 
 class BottomTab extends StatefulWidget {
   const BottomTab({super.key});
@@ -23,9 +20,6 @@ class _BottomTabState extends State<BottomTab> {
         controller: _pagesController,
         children: const [
           HomePage(),
-          CategoryPage(),
-          SavedPage(),
-          ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
