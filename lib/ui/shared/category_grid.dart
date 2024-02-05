@@ -21,16 +21,12 @@ class _CategoryGridState extends State<CategoryGrid> {
       padding: const EdgeInsets.only(right: 10.0),
       child: Column(
         children: [
-          // Image.asset(
-          //   widget.image,
-          //   height: MediaQuery.of(context).size.height / 12,
-          // ),
           Container(
-            height: MediaQuery.of(context).size.height / 12,
+            height: MediaQuery.of(context).size.height / 10,
             width: MediaQuery.of(context).size.width / 5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: Color(0xFFA4D6E7),
+              color: const Color(0xFFA4D6E7),
               //D1EBF4 //A4D6E7
               image: DecorationImage(
                   image: AssetImage(widget.image), fit: BoxFit.cover),
@@ -39,8 +35,8 @@ class _CategoryGridState extends State<CategoryGrid> {
           const SizedBox(height: 8.0),
           Text(
             widget.category,
-            maxLines: 1,
-            overflow: TextOverflow.clip,
+            // maxLines: 1,
+            // overflow: TextOverflow.clip,
             style: const TextStyle(
               fontSize: 12,
             ),
