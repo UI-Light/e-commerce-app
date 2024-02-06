@@ -15,6 +15,20 @@ class ProductsGrid extends StatefulWidget {
 }
 
 class _ProductsGridState extends State<ProductsGrid> {
+  bool isClicked = false;
+
+  void saveItem() async {
+    if (isClicked) {
+      setState(() {
+        isClicked = false;
+      });
+    } else {
+      setState(() {
+        isClicked = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,9 +43,26 @@ class _ProductsGridState extends State<ProductsGrid> {
               color: const Color(0xFFD1EBF4),
               //D1EBF4 //A4D6E7
               image: DecorationImage(
-                image: AssetImage(widget.image),
-                fit: BoxFit.cover,
+                image: AssetImage(
+                  widget.image,
+                ),
+                fit: BoxFit.contain,
               ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    saveItem();
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    color: isClicked ? const Color(0XFF007FAC) : Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 8.0),
@@ -39,44 +70,48 @@ class _ProductsGridState extends State<ProductsGrid> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     widget.productName,
-                    // maxLines: 1,
-                    // overflow: TextOverflow.clip,
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                     ),
                   ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.star_rate_rounded,
+                        size: 12.0,
+                        color: Colors.amberAccent,
+                      ),
+                      Icon(
+                        Icons.star_rate_rounded,
+                        size: 12.0,
+                        color: Colors.amberAccent,
+                      ),
+                      Icon(
+                        Icons.star_rate_rounded,
+                        size: 12.0,
+                        color: Colors.amberAccent,
+                      ),
+                      Icon(
+                        Icons.star_rate_rounded,
+                        size: 12.0,
+                        color: Colors.amberAccent,
+                      ),
+                      Icon(
+                        Icons.star_rate_rounded,
+                        size: 12.0,
+                        color: Colors.amberAccent,
+                      ),
+                    ],
+                  )
                 ],
               ),
-              Text(widget.price, style: const TextStyle(color: Colors.blue)),
+              Text(widget.price,
+                  style:
+                      const TextStyle(color: Color(0XFF007FAC), fontSize: 12)),
             ],
           ),
         ],

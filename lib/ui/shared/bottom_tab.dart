@@ -13,7 +13,14 @@ class BottomTab extends StatefulWidget {
 
 class _BottomTabState extends State<BottomTab> {
   final PageController _pagesController = PageController();
-  bool selected = false;
+  int _selectedIndex = 0;
+
+  void onTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _pagesController.jumpToPage(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,49 +45,39 @@ class _BottomTabState extends State<BottomTab> {
               IconButton(
                 icon: Icon(
                   Icons.home,
-                  color: selected ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 0
+                      ? const Color(0XFF007FAC)
+                      : Colors.grey, //027FAC or //007FAC
                 ),
                 onPressed: () {
-                  setState(() {
-                    selected = !selected;
-                  });
-                  _pagesController.jumpToPage(0);
+                  onTapped(0);
                 },
               ),
               IconButton(
                 icon: Icon(
                   Icons.category,
-                  color: selected ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 1 ? Color(0XFF007FAC) : Colors.grey,
                 ),
                 onPressed: () {
-                  setState(() {
-                    selected = !selected;
-                  });
-                  _pagesController.jumpToPage(1);
+                  onTapped(1);
                 },
               ),
               IconButton(
                 icon: Icon(
                   Icons.favorite,
-                  color: selected ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 2 ? Color(0XFF007FAC) : Colors.grey,
                 ),
                 onPressed: () {
-                  setState(() {
-                    selected = !selected;
-                  });
-                  _pagesController.jumpToPage(2);
+                  onTapped(2);
                 },
               ),
               IconButton(
                 icon: Icon(
                   Icons.person,
-                  color: selected ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 3 ? Color(0XFF007FAC) : Colors.grey,
                 ),
                 onPressed: () {
-                  setState(() {
-                    selected = !selected;
-                  });
-                  _pagesController.jumpToPage(3);
+                  onTapped(3);
                 },
               ),
             ],

@@ -15,7 +15,7 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             const Text(
@@ -27,43 +27,47 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 10.0),
-              height: MediaQuery.of(context).size.height / 18,
+              height: MediaQuery.of(context).size.height / 19,
               padding: const EdgeInsets.only(
-                top: 10.0,
                 left: 15.0,
               ),
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
               child: const TextField(
                 decoration: InputDecoration(
                   hintText: "Search",
+                  hintStyle: TextStyle(fontSize: 14),
                   suffixIcon: Icon(
                     Icons.search,
+                    color: Colors.black,
                   ),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            const SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'All Items',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-                Text(
-                  'Popular Items',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                ),
-                Text(
-                  'Best Deals',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                ),
-              ],
-            ),
+            const SizedBox(height: 8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'All Items',
+                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 13),
+                  ),
+                  Text(
+                    'Popular Items',
+                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                  ),
+                  Text(
+                    'Best Deals',
+                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                  ),
+                ],
+              ),
+            ), //A4D6E7
             const SizedBox(height: 15),
             Expanded(
               child: GridView(
@@ -79,16 +83,36 @@ class _CategoryPageState extends State<CategoryPage> {
                     child: const ProductsGrid(
                         productName: "Garnier Facewash",
                         price: "\$300",
-                        image: 'lipstick.png'),
+                        image: 'assets/lipstick.png'),
                   ),
                   const ProductsGrid(
                       productName: "Garnier Facewash",
                       price: "\$300",
-                      image: 'skincare.png'),
+                      image: 'assets/skincare.png'),
                   const ProductsGrid(
                       productName: "Garnier Facewash",
                       price: "\$300",
-                      image: 'makeup.png'),
+                      image: 'assets/makeup.png'),
+                  const ProductsGrid(
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'assets/skincare.png'),
+                  const ProductsGrid(
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'assets/skincare.png'),
+                  const ProductsGrid(
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'assets/skincare.png'),
+                  const ProductsGrid(
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'assets/skincare.png'),
+                  const ProductsGrid(
+                      productName: "Garnier Facewash",
+                      price: "\$300",
+                      image: 'assets/skincare.png'),
                 ],
               ),
             ),

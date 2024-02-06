@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       "See All",
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
                     )
                   ],
                 ),
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       "See All",
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
                     )
                   ],
                 ),
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       "See All",
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
                     )
                   ],
                 ),
@@ -183,52 +183,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.home,
-      //             color: Colors.blue,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.category,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {
-      //             Navigator.of(context).push(
-      //               MaterialPageRoute(
-      //                 builder: (context) => const CategoryPage(),
-      //               ),
-      //             );
-      //           },
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.favorite,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: ''),
-      //     BottomNavigationBarItem(
-      //         icon: IconButton(
-      //           icon: const Icon(
-      //             Icons.person,
-      //             color: Colors.grey,
-      //           ),
-      //           onPressed: () {},
-      //         ),
-      //         label: '')
-      //   ],
-      // ),
     );
   }
 }

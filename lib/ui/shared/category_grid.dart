@@ -27,7 +27,7 @@ class _CategoryGridState extends State<CategoryGrid> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               color: const Color(0xFFA4D6E7),
-              //D1EBF4 //A4D6E7
+              //C3E4F0
               image: DecorationImage(
                   image: AssetImage(widget.image), fit: BoxFit.cover),
             ),
