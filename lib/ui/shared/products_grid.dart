@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
+import 'package:shopping_app/ui/shared/stars.dart';
 
 class ProductsGrid extends StatefulWidget {
   final String productName;
   final String price;
+  final String image;
+  final Color color;
   const ProductsGrid(
-      {super.key, required this.productName, required this.price});
+      {super.key,
+      required this.productName,
+      required this.price,
+      required this.image,
+      this.color = Palette.categoryGridBg});
 
   @override
   State<ProductsGrid> createState() => _ProductsGridState();
 }
 
 class _ProductsGridState extends State<ProductsGrid> {
+  bool isClicked = false;
+
+  void saveItem() {
+    setState(() {
+      isClicked = !isClicked;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,12 +38,28 @@ class _ProductsGridState extends State<ProductsGrid> {
             width: MediaQuery.of(context).size.width / 2.3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: const Color(0xFFD1EBF4),
-              //D1EBF4 //A4D6E7
-              // image: DecorationImage(
-              //   image: AssetImage(widget.image),
-              //   fit: BoxFit.cover,
-              // ),
+              color: widget.color,
+              image: DecorationImage(
+                image: AssetImage(
+                  widget.image,
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    saveItem();
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    color: isClicked ? Palette.blue : Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 8.0),
@@ -35,44 +67,19 @@ class _ProductsGridState extends State<ProductsGrid> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     widget.productName,
-                    // maxLines: 1,
-                    // overflow: TextOverflow.clip,
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                     ),
                   ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    size: 15.0,
-                    color: Colors.amberAccent,
-                  ),
+                  const Stars(),
                 ],
               ),
-              Text(widget.price, style: const TextStyle(color: Colors.blue)),
+              Text(widget.price,
+                  style: const TextStyle(color: Palette.blue, fontSize: 12)),
             ],
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
 
 class CategoryGrid extends StatefulWidget {
   final String image;
@@ -26,8 +27,7 @@ class _CategoryGridState extends State<CategoryGrid> {
             width: MediaQuery.of(context).size.width / 5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: const Color(0xFFA4D6E7),
-              //D1EBF4 //A4D6E7
+              color: Palette.categoryGridBg,
               image: DecorationImage(
                   image: AssetImage(widget.image), fit: BoxFit.cover),
             ),
