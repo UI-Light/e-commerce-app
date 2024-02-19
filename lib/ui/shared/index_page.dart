@@ -3,15 +3,16 @@ import 'package:shopping_app/ui/views/category_page.dart';
 import 'package:shopping_app/ui/views/home_page.dart';
 import 'package:shopping_app/ui/views/profile_page.dart';
 import 'package:shopping_app/ui/views/saved_page.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
 
-class BottomTab extends StatefulWidget {
-  const BottomTab({super.key});
+class IndexPage extends StatefulWidget {
+  const IndexPage({super.key});
 
   @override
-  State<BottomTab> createState() => _BottomTabState();
+  State<IndexPage> createState() => _IndexPageState();
 }
 
-class _BottomTabState extends State<BottomTab> {
+class _IndexPageState extends State<IndexPage> {
   final PageController _pagesController = PageController();
   int _selectedIndex = 0;
 
@@ -20,6 +21,12 @@ class _BottomTabState extends State<BottomTab> {
       _selectedIndex = index;
       _pagesController.jumpToPage(index);
     });
+  }
+
+  @override
+  void dispose() {
+    _pagesController.dispose();
+    super.dispose();
   }
 
   @override
@@ -46,8 +53,8 @@ class _BottomTabState extends State<BottomTab> {
                 icon: Icon(
                   Icons.home,
                   color: _selectedIndex == 0
-                      ? const Color(0XFF007FAC)
-                      : Colors.grey, //027FAC or //007FAC
+                      ? Palette.blue
+                      : Palette.unselected, //027FAC or //007FAC
                 ),
                 onPressed: () {
                   onTapped(0);
@@ -56,7 +63,8 @@ class _BottomTabState extends State<BottomTab> {
               IconButton(
                 icon: Icon(
                   Icons.category,
-                  color: _selectedIndex == 1 ? Color(0XFF007FAC) : Colors.grey,
+                  color:
+                      _selectedIndex == 1 ? Palette.blue : Palette.unselected,
                 ),
                 onPressed: () {
                   onTapped(1);
@@ -65,7 +73,8 @@ class _BottomTabState extends State<BottomTab> {
               IconButton(
                 icon: Icon(
                   Icons.favorite,
-                  color: _selectedIndex == 2 ? Color(0XFF007FAC) : Colors.grey,
+                  color:
+                      _selectedIndex == 2 ? Palette.blue : Palette.unselected,
                 ),
                 onPressed: () {
                   onTapped(2);
@@ -74,7 +83,8 @@ class _BottomTabState extends State<BottomTab> {
               IconButton(
                 icon: Icon(
                   Icons.person,
-                  color: _selectedIndex == 3 ? Color(0XFF007FAC) : Colors.grey,
+                  color:
+                      _selectedIndex == 3 ? Palette.blue : Palette.unselected,
                 ),
                 onPressed: () {
                   onTapped(3);

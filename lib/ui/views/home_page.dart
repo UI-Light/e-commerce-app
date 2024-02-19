@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/ui/shared/category_grid.dart';
 import 'package:shopping_app/ui/shared/discount_grid.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
 import 'package:shopping_app/ui/shared/products_grid.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: const Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     "See All",
-                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
+                    style: TextStyle(color: Palette.blue, fontSize: 16),
                   )
                 ],
               ),
@@ -109,22 +110,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     "See All",
-                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Popular Products",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "See All",
-                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
+                    style: TextStyle(color: Palette.blue, fontSize: 16),
                   )
                 ],
               ),
@@ -136,23 +122,28 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     ProductsGrid(
-                        productName: 'Garnier Facewash',
-                        price: '\$200',
-                        image: ''),
-                    ProductsGrid(
-                      productName: 'Shibaki Cream',
-                      price: '\$1500',
+                      productName: 'Garnier Facewash',
+                      price: '\$200',
                       image: '',
+                      color: Palette.productGridBg,
                     ),
                     ProductsGrid(
                       productName: 'Shibaki Cream',
                       price: '\$1500',
                       image: '',
+                      color: Palette.productGridBg,
+                    ),
+                    ProductsGrid(
+                      productName: 'Shibaki Cream',
+                      price: '\$1500',
+                      image: '',
+                      color: Palette.productGridBg,
                     ),
                     ProductsGrid(
                       productName: 'Garnier Facewash',
                       price: '\$200',
                       image: '',
+                      color: Palette.productGridBg,
                     ),
                   ],
                 ),
@@ -161,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "New Arrivals",
@@ -168,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     "See All",
-                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 16),
+                    style: TextStyle(color: Palette.blue, fontSize: 16),
                   )
                 ],
               ),
@@ -183,17 +175,26 @@ class _HomePageState extends State<HomePage> {
                       productName: 'Laneige lip mask',
                       price: '\$600',
                       image: '',
+                      color: Palette.productGridBg,
                     ),
                     ProductsGrid(
-                        productName: 'Dove Combo', price: '\$3000', image: ''),
+                      productName: 'Dove Combo',
+                      price: '\$3000',
+                      image: '',
+                      color: Palette.productGridBg,
+                    ),
                     ProductsGrid(
-                        productName: 'Shibaki Cream',
-                        price: '\$1500',
-                        image: ''),
+                      productName: 'Shibaki Cream',
+                      price: '\$1500',
+                      image: '',
+                      color: Palette.productGridBg,
+                    ),
                     ProductsGrid(
-                        productName: 'Garnier Facewash',
-                        price: '\$200',
-                        image: ""),
+                      productName: 'Garnier Facewash',
+                      price: '\$200',
+                      image: "",
+                      color: Palette.productGridBg,
+                    ),
                   ],
                 ),
               ),

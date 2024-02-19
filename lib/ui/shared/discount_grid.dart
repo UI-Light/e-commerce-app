@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
 
 class DiscountGrid extends StatelessWidget {
   const DiscountGrid({super.key});
@@ -12,7 +13,7 @@ class DiscountGrid extends StatelessWidget {
         width: MediaQuery.of(context).size.height / 3,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: const Color(0xFFC7E6F1)),
+            color: Palette.discountGridBg),
         child: Padding(
           padding: const EdgeInsets.only(
             top: 10.0,
@@ -53,7 +54,7 @@ class DiscountGrid extends StatelessWidget {
           ),
         ),
       ),
-    ); //C7E6F1
+    );
   }
 }
 //second gradient//FAD7DF  //BCE5F1

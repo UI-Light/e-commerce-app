@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ui/shared/palette.dart';
+import 'package:shopping_app/ui/shared/stars.dart';
 
 class ProductsGrid extends StatefulWidget {
   final String productName;
   final String price;
   final String image;
+  final Color color;
   const ProductsGrid(
       {super.key,
       required this.productName,
       required this.price,
-      required this.image});
+      required this.image,
+      this.color = Palette.categoryGridBg});
 
   @override
   State<ProductsGrid> createState() => _ProductsGridState();
@@ -17,16 +21,10 @@ class ProductsGrid extends StatefulWidget {
 class _ProductsGridState extends State<ProductsGrid> {
   bool isClicked = false;
 
-  void saveItem() async {
-    if (isClicked) {
-      setState(() {
-        isClicked = false;
-      });
-    } else {
-      setState(() {
-        isClicked = true;
-      });
-    }
+  void saveItem() {
+    setState(() {
+      isClicked = !isClicked;
+    });
   }
 
   @override
@@ -40,8 +38,7 @@ class _ProductsGridState extends State<ProductsGrid> {
             width: MediaQuery.of(context).size.width / 2.3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: const Color(0xFFD1EBF4),
-              //D1EBF4 //A4D6E7
+              color: widget.color,
               image: DecorationImage(
                 image: AssetImage(
                   widget.image,
@@ -59,7 +56,7 @@ class _ProductsGridState extends State<ProductsGrid> {
                   },
                   icon: Icon(
                     Icons.favorite,
-                    color: isClicked ? const Color(0XFF007FAC) : Colors.white,
+                    color: isClicked ? Palette.blue : Colors.white,
                   ),
                 ),
               ],
@@ -78,40 +75,11 @@ class _ProductsGridState extends State<ProductsGrid> {
                       fontSize: 12,
                     ),
                   ),
-                  const Row(
-                    children: [
-                      Icon(
-                        Icons.star_rate_rounded,
-                        size: 12.0,
-                        color: Colors.amberAccent,
-                      ),
-                      Icon(
-                        Icons.star_rate_rounded,
-                        size: 12.0,
-                        color: Colors.amberAccent,
-                      ),
-                      Icon(
-                        Icons.star_rate_rounded,
-                        size: 12.0,
-                        color: Colors.amberAccent,
-                      ),
-                      Icon(
-                        Icons.star_rate_rounded,
-                        size: 12.0,
-                        color: Colors.amberAccent,
-                      ),
-                      Icon(
-                        Icons.star_rate_rounded,
-                        size: 12.0,
-                        color: Colors.amberAccent,
-                      ),
-                    ],
-                  )
+                  const Stars(),
                 ],
               ),
               Text(widget.price,
-                  style:
-                      const TextStyle(color: Color(0XFF007FAC), fontSize: 12)),
+                  style: const TextStyle(color: Palette.blue, fontSize: 12)),
             ],
           ),
         ],
