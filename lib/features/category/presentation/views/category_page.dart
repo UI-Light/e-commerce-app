@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
+import 'package:shopping_app/features/category/presentation/widgets/all_items.dart';
+import 'package:shopping_app/features/category/presentation/widgets/best_deals.dart';
+import 'package:shopping_app/features/category/presentation/widgets/popular_items.dart';
 import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -9,7 +13,22 @@ class CategoryPage extends StatefulWidget {
   State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _CategoryPageState extends State<CategoryPage>
+    with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,73 +67,31 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
             ),
             const SizedBox(height: 8.0),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'All Items',
-                    style: TextStyle(color: Color(0XFF007FAC), fontSize: 13),
-                  ),
-                  Text(
-                    'Popular Items',
-                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
-                  ),
-                  Text(
-                    'Best Deals',
-                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
-                  ),
-                ],
-              ),
-            ), //A4D6E7
-            const SizedBox(height: 15),
-            Expanded(
-              child: GridView(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: 6,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
+            TabBar(
+              labelStyle: const TextStyle(fontSize: 13),
+              labelColor: Palette.blue,
+              unselectedLabelColor: Palette.tabUnselected,
+              controller: _tabController,
+              tabs: const [
+                Tab(
+                  text: 'All Items',
                 ),
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ProductDetailsPage())),
-                    child: const ProductsGrid(
-                        productName: "Garnier Facewash",
-                        price: "\$300",
-                        image: 'assets/lipstick.png'),
-                  ),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/makeup.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                  const ProductsGrid(
-                      productName: "Garnier Facewash",
-                      price: "\$300",
-                      image: 'assets/skincare.png'),
-                ],
-              ),
+                Tab(
+                  text: 'Popular Items',
+                ),
+                Tab(
+                  text: 'Best Deals',
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            TabBarView(
+              controller: _tabController,
+              children: const [
+                AllItems(),
+                PopularItems(),
+                BestDeals(),
+              ],
             ),
           ],
         ),

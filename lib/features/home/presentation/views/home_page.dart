@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/shared/category_grid.dart';
-import 'package:shopping_app/ui/shared/discount_grid.dart';
+import 'package:shopping_app/features/home/presentation/widgets/discount_grid.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
-import 'package:shopping_app/ui/shared/products_grid.dart';
+import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
+
+import '../widgets/category_grid.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
