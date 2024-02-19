@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/shared/palette.dart';
-import 'package:shopping_app/ui/shared/stars.dart';
+import 'package:shopping_app/core/presentation/palette.dart';
+import 'package:shopping_app/core/presentation/widgets/stars.dart';
 
 class ProductsGrid extends StatefulWidget {
   final String productName;

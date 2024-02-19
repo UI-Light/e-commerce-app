@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/shared/products_grid.dart';
-import 'package:shopping_app/ui/views/product_details_page.dart';
+import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
+import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});

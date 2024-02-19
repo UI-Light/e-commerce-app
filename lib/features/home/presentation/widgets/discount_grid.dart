@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/shared/palette.dart';
+import 'package:shopping_app/core/presentation/palette.dart';
 
 class DiscountGrid extends StatelessWidget {
   const DiscountGrid({super.key});

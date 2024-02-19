@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/shared/index_page.dart';
+import 'package:shopping_app/views/index_page.dart';
 
 void main() {
   runApp(const MyApp());
