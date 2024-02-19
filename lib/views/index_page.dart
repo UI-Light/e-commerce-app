@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/ui/views/category_page.dart';
-import 'package:shopping_app/ui/views/home_page.dart';
-import 'package:shopping_app/ui/views/profile_page.dart';
-import 'package:shopping_app/ui/views/saved_page.dart';
-import 'package:shopping_app/ui/shared/palette.dart';
+import 'package:shopping_app/core/presentation/palette.dart';
+import 'package:shopping_app/features/category/presentation/views/category_page.dart';
+import 'package:shopping_app/features/favourites/presentation/views/favourites_page.dart';
+import 'package:shopping_app/features/home/presentation/views/home_page.dart';
+import 'package:shopping_app/features/profile/presentation/views/profile_page.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
@@ -38,7 +38,7 @@ class _IndexPageState extends State<IndexPage> {
         children: const [
           HomePage(),
           CategoryPage(),
-          SavedPage(),
+          FavouritesPage(),
           ProfilePage(),
         ],
       ),
