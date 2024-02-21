@@ -3,7 +3,6 @@ import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/features/category/presentation/widgets/all_items.dart';
 import 'package:shopping_app/features/category/presentation/widgets/best_deals.dart';
 import 'package:shopping_app/features/category/presentation/widgets/popular_items.dart';
-import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -32,69 +31,71 @@ class _CategoryPageState extends State<CategoryPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            const Text(
-              'All Categories',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            const SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              height: MediaQuery.of(context).size.height / 19,
-              padding: const EdgeInsets.only(
-                left: 15.0,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+          child: Column(
+            children: [
+              const Text(
+                'All Categories',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
+              const SizedBox(
+                height: 15.0,
               ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  hintStyle: TextStyle(fontSize: 14),
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
+              Container(
+                height: MediaQuery.of(context).size.height / 19,
+                padding: const EdgeInsets.only(
+                  left: 15.0,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    hintStyle: TextStyle(fontSize: 14),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    ),
+                    border: InputBorder.none,
                   ),
-                  border: InputBorder.none,
                 ),
               ),
-            ),
-            const SizedBox(height: 8.0),
-            TabBar(
-              labelStyle: const TextStyle(fontSize: 13),
-              labelColor: Palette.blue,
-              unselectedLabelColor: Palette.tabUnselected,
-              controller: _tabController,
-              tabs: const [
-                Tab(
-                  text: 'All Items',
+              const SizedBox(height: 8.0),
+              TabBar(
+                labelStyle: const TextStyle(fontSize: 13),
+                labelColor: Palette.blue,
+                unselectedLabelColor: Palette.tabUnselected,
+                controller: _tabController,
+                tabs: const [
+                  Tab(
+                    text: 'All Items',
+                  ),
+                  Tab(
+                    text: 'Popular Items',
+                  ),
+                  Tab(
+                    text: 'Best Deals',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: const [
+                    AllItems(),
+                    PopularItems(),
+                    BestDeals(),
+                  ],
                 ),
-                Tab(
-                  text: 'Popular Items',
-                ),
-                Tab(
-                  text: 'Best Deals',
-                ),
-              ],
-            ),
-            const SizedBox(height: 15),
-            TabBarView(
-              controller: _tabController,
-              children: const [
-                AllItems(),
-                PopularItems(),
-                BestDeals(),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

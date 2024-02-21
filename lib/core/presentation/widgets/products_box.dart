@@ -8,12 +8,15 @@ class ProductsGrid extends StatefulWidget {
   final String price;
   final String image;
   final Color color;
-  const ProductsGrid(
-      {super.key,
-      required this.productName,
-      required this.price,
-      required this.image,
-      this.color = Palette.categoryGridBg});
+  //final Function onTap;
+  const ProductsGrid({
+    super.key,
+    required this.productName,
+    required this.price,
+    required this.image,
+    this.color = Palette.categoryGridBg,
+    //required this.onTap,
+  });
 
   @override
   State<ProductsGrid> createState() => _ProductsGridState();
