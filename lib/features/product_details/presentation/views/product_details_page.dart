@@ -10,6 +10,26 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  int counter = 0;
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  void decrement() {
+    if (counter == 0) {
+      setState(() {
+        counter = 0;
+      });
+    } else {
+      setState(() {
+        counter--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -72,9 +92,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 25.0,
                   ),
-                  const Text('Select size'),
+                  const Text(
+                    'Select size',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Row(
                     children: [
                       Container(
@@ -89,9 +115,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         color: Palette.productGridBg,
                         child: const Text('200 GM'),
                       ),
-                      TextButton(onPressed: () {}, child: const Text('-')),
-                      const Text('2'),
-                      TextButton(onPressed: () {}, child: const Text('+')),
+                      TextButton(
+                          onPressed: () {
+                            decrement();
+                          },
+                          child: const Text('-')),
+                      Text(counter.toString()),
+                      TextButton(
+                          onPressed: () {
+                            increment();
+                          },
+                          child: const Text('+')),
                     ],
                   ),
                   const SizedBox(height: 15.0),
@@ -102,21 +136,47 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(
+                    height: 5.0,
+                  ),
                   const Text(
                     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                    style: TextStyle(),
+                    textAlign: TextAlign.justify,
                   ),
+                  const SizedBox(height: 15),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 10,
-                        width: MediaQuery.of(context).size.width / 10,
-                        color: Palette.blue,
-                        child: Text('Add to cart'),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: const ButtonStyle(
+                          elevation: MaterialStatePropertyAll(0.0),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Palette.blue),
+                          // fixedSize: MaterialStatePropertyAll<Size>(
+                          //   Size.fromWidth(160),
+                          // ),
+                          minimumSize:
+                              MaterialStatePropertyAll<Size>(Size(160, 40)),
+                        ),
+                        child: const Text('Add to cart'),
                       ),
-                      Container(
-                        color: Palette.categoryGridBg,
-                        child: Text('Buy Now'),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: const ButtonStyle(
+                          elevation: MaterialStatePropertyAll(0.0),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Palette.categoryGridBg),
+                          //fixedSize: MaterialStatePropertyAll<Size>(
+                          // Size.fromWidth(160),
+                          // ),
+                          minimumSize:
+                              MaterialStatePropertyAll<Size>(Size(160, 40)),
+                        ),
+                        child: const Text('Buy Now',
+                            style: TextStyle(
+                              color: Colors.black,
+                            )),
                       ),
                     ],
                   )

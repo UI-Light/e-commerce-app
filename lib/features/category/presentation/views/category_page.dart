@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
-import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
 import 'package:shopping_app/features/category/presentation/widgets/all_items.dart';
 import 'package:shopping_app/features/category/presentation/widgets/best_deals.dart';
 import 'package:shopping_app/features/category/presentation/widgets/popular_items.dart';

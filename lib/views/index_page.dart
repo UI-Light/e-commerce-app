@@ -3,6 +3,7 @@ import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/features/category/presentation/views/category_page.dart';
 import 'package:shopping_app/features/favourites/presentation/views/favourites_page.dart';
 import 'package:shopping_app/features/home/presentation/views/home_page.dart';
+import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 import 'package:shopping_app/features/profile/presentation/views/profile_page.dart';
 
 class IndexPage extends StatefulWidget {
@@ -40,6 +41,7 @@ class _IndexPageState extends State<IndexPage> {
           CategoryPage(),
           FavouritesPage(),
           ProfilePage(),
+          // ProductDetailsPage(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
