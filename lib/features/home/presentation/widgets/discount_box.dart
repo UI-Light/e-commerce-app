@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 
-class DiscountGrid extends StatelessWidget {
-  const DiscountGrid({super.key});
+class DiscountBox extends StatelessWidget {
+  const DiscountBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DiscountGrid extends StatelessWidget {
         width: MediaQuery.of(context).size.height / 3,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Palette.discountGridBg),
+            color: Palette.discountBoxBg),
         child: Padding(
           padding: const EdgeInsets.only(
             top: 10.0,

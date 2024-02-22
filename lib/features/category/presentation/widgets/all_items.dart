@@ -13,35 +13,35 @@ class AllItems extends StatelessWidget {
         crossAxisCount: 2,
       ),
       children: const [
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/lipstick.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/makeup.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
