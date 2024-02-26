@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/features/home/presentation/widgets/discount_grid.dart';
+import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
-import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
-
-import '../widgets/category_grid.dart';
+import 'package:shopping_app/core/presentation/widgets/products_box.dart';
+import '../widgets/category_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -78,13 +77,12 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    CategoryGrid(
+                    CategoryBox(
                         image: 'assets/lipstick.png', category: 'lipsticks'),
-                    CategoryGrid(
-                        image: 'assets/makeup.png', category: 'makeup'),
-                    CategoryGrid(
+                    CategoryBox(image: 'assets/makeup.png', category: 'makeup'),
+                    CategoryBox(
                         image: 'assets/perfume.png', category: 'perfumes'),
-                    CategoryGrid(
+                    CategoryBox(
                         image: 'assets/skincare.png', category: 'skincare'),
                   ],
                 ),
@@ -96,8 +94,8 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    DiscountGrid(),
-                    DiscountGrid(),
+                    DiscountBox(),
+                    DiscountBox(),
                   ],
                 ),
               ),
@@ -122,29 +120,29 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Garnier Facewash',
                       price: '\$200',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Shibaki Cream',
                       price: '\$1500',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Shibaki Cream',
                       price: '\$1500',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Garnier Facewash',
                       price: '\$200',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
                   ],
                 ),
@@ -172,29 +170,29 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Laneige lip mask',
                       price: '\$600',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Dove Combo',
                       price: '\$3000',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Shibaki Cream',
                       price: '\$1500',
                       image: '',
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
-                    ProductsGrid(
+                    ProductsBox(
                       productName: 'Garnier Facewash',
                       price: '\$200',
                       image: "",
-                      color: Palette.productGridBg,
+                      color: Palette.productBoxBg,
                     ),
                   ],
                 ),

@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
+import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
-import '../../../features/product_details/presentation/views/product_details_page.dart';
-
-class ProductsGrid extends StatefulWidget {
+class ProductsBox extends StatefulWidget {
   final String productName;
   final String price;
   final String image;
   final Color color;
-  //final Function onTap;
-  const ProductsGrid({
+
+  const ProductsBox({
     super.key,
     required this.productName,
     required this.price,
     required this.image,
-    this.color = Palette.categoryGridBg,
-    //required this.onTap,
+    this.color = Palette.categoryBoxBg,
   });
 
   @override
-  State<ProductsGrid> createState() => _ProductsGridState();
+  State<ProductsBox> createState() => _ProductsBoxState();
 }
 
-class _ProductsGridState extends State<ProductsGrid> {
+class _ProductsBoxState extends State<ProductsBox> {
   bool isClicked = false;
 
   void saveItem() {

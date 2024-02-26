@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/presentation/widgets/products_grid.dart';
-import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
+import 'package:shopping_app/core/presentation/widgets/products_box.dart';
 
 class AllItems extends StatelessWidget {
   const AllItems({super.key});
@@ -14,35 +13,35 @@ class AllItems extends StatelessWidget {
         crossAxisCount: 2,
       ),
       children: const [
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/lipstick.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/makeup.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),
-        ProductsGrid(
+        ProductsBox(
             productName: "Garnier Facewash",
             price: "\$300",
             image: 'assets/skincare.png'),

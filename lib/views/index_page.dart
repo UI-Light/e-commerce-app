@@ -45,16 +45,14 @@ class _IndexPageState extends State<IndexPage> {
       bottomNavigationBar: BottomAppBar(
         child: Container(
           margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-          //color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
                 icon: Icon(
                   Icons.home,
-                  color: _selectedIndex == 0
-                      ? Palette.blue
-                      : Palette.unselected, //027FAC or //007FAC
+                  color:
+                      _selectedIndex == 0 ? Palette.blue : Palette.unselected,
                 ),
                 onPressed: () {
                   onTapped(0);
