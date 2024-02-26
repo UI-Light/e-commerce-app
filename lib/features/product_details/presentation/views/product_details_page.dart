@@ -147,8 +147,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             width: 20,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height / 40,
-                            width: MediaQuery.of(context).size.height / 40.5,
+                            height: MediaQuery.of(context).size.height / 38,
+                            width: MediaQuery.of(context).size.height / 38,
                             color: Palette.blue,
                             child: GestureDetector(
                                 onTap: () {
@@ -194,31 +194,42 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             children: [
               ElevatedButton(
                 onPressed: () {},
-                style: const ButtonStyle(
-                  elevation: MaterialStatePropertyAll(0.0),
-                  backgroundColor: MaterialStatePropertyAll(Palette.blue),
-                  // fixedSize: MaterialStatePropertyAll<Size>(
-                  //   Size.fromWidth(160),
-                  // ),
-                  minimumSize: MaterialStatePropertyAll<Size>(Size(160, 40)),
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(0.0),
+                  backgroundColor: const MaterialStatePropertyAll(Palette.blue),
+                  minimumSize:
+                      const MaterialStatePropertyAll<Size>(Size(160, 40)),
+                  shape: MaterialStatePropertyAll<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                  ),
                 ),
-                child: const Text('Add to cart'),
+                child: const Text(
+                  'Add to cart',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               ElevatedButton(
                 onPressed: () {},
-                style: const ButtonStyle(
-                  elevation: MaterialStatePropertyAll(0.0),
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(0.0),
                   backgroundColor:
-                      MaterialStatePropertyAll(Palette.categoryBoxBg),
-                  //fixedSize: MaterialStatePropertyAll<Size>(
-                  // Size.fromWidth(160),
-                  // ),
-                  minimumSize: MaterialStatePropertyAll<Size>(Size(160, 40)),
+                      const MaterialStatePropertyAll(Palette.categoryBoxBg),
+                  minimumSize:
+                      const MaterialStatePropertyAll<Size>(Size(160, 40)),
+                  shape: MaterialStatePropertyAll<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                  ),
                 ),
-                child: const Text('Buy Now',
-                    style: TextStyle(
-                      color: Colors.black,
-                    )),
+                child: const Text(
+                  'Buy Now',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ],
           ),
