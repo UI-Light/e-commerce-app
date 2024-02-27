@@ -8,6 +8,9 @@ class Product {
   final String category;
   final String image;
   final Rating rating;
+  String get formattedPrice {
+    return '\$$price';
+  }
 
   Product({
     required this.id,

@@ -84,7 +84,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                   const Stars(),
                 ],
               ),
-              Text('\$${widget.product.price}',
+              Text(widget.product.formattedPrice,
                   style: const TextStyle(color: Palette.blue, fontSize: 12)),
             ],
           ),
