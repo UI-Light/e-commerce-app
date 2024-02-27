@@ -27,9 +27,7 @@ class CategoryBox extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            category.category,
-            // maxLines: 1,
-            // overflow: TextOverflow.clip,
+            category.name,
             style: const TextStyle(
               fontSize: 12,
             ),

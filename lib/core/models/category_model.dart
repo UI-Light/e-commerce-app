@@ -1,16 +1,16 @@
 class Category {
   final String image;
-  final String category;
+  final String name;
 
   Category({
-    required this.category,
+    required this.name,
     required this.image,
   });
 
   static List<Category> categories = [
-    Category(image: 'assets/lipstick.png', category: 'lipsticks'),
-    Category(image: 'assets/makeup.png', category: 'makeup'),
-    Category(image: 'assets/perfume.png', category: 'perfumes'),
-    Category(image: 'assets/skincare.png', category: 'skincare'),
+    Category(image: 'assets/lipstick.png', name: 'lipsticks'),
+    Category(image: 'assets/makeup.png', name: 'makeup'),
+    Category(image: 'assets/perfume.png', name: 'perfumes'),
+    Category(image: 'assets/skincare.png', name: 'skincare'),
   ];
 }
