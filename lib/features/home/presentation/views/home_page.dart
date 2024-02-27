@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/models/category_model.dart';
+import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
@@ -51,13 +53,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(10.0),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 2),
-              Row(
+              const SizedBox(height: 2),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -70,27 +72,22 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    CategoryBox(
-                        image: 'assets/lipstick.png', category: 'lipsticks'),
-                    CategoryBox(image: 'assets/makeup.png', category: 'makeup'),
-                    CategoryBox(
-                        image: 'assets/perfume.png', category: 'perfumes'),
-                    CategoryBox(
-                        image: 'assets/skincare.png', category: 'skincare'),
+                    for (final category in Category.categories)
+                      CategoryBox(category: category)
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              SingleChildScrollView(
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -99,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 25),
-              Row(
+              const SizedBox(height: 25),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -113,44 +110,22 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ProductsBox(
-                      productName: 'Garnier Facewash',
-                      price: '\$200',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Shibaki Cream',
-                      price: '\$1500',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Shibaki Cream',
-                      price: '\$1500',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Garnier Facewash',
-                      price: '\$200',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
+                    for (final product in Product.products)
+                      ProductsBox(product: product)
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -163,37 +138,15 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ProductsBox(
-                      productName: 'Laneige lip mask',
-                      price: '\$600',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Dove Combo',
-                      price: '\$3000',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Shibaki Cream',
-                      price: '\$1500',
-                      image: '',
-                      color: Palette.productBoxBg,
-                    ),
-                    ProductsBox(
-                      productName: 'Garnier Facewash',
-                      price: '\$200',
-                      image: "",
-                      color: Palette.productBoxBg,
-                    ),
+                    for (final product in Product.products)
+                      ProductsBox(product: product)
                   ],
                 ),
               ),

@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 
-class CategoryBox extends StatefulWidget {
-  final String image;
-  final String category;
-
+class CategoryBox extends StatelessWidget {
+  final Category category;
   const CategoryBox({
     super.key,
-    required this.image,
     required this.category,
   });
 
-  @override
-  State<CategoryBox> createState() => _CategoryBoxState();
-}
-
-class _CategoryBoxState extends State<CategoryBox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,12 +22,12 @@ class _CategoryBoxState extends State<CategoryBox> {
               borderRadius: BorderRadius.circular(6),
               color: Palette.categoryBoxBg,
               image: DecorationImage(
-                  image: AssetImage(widget.image), fit: BoxFit.cover),
+                  image: AssetImage(category.image), fit: BoxFit.cover),
             ),
           ),
           const SizedBox(height: 8.0),
           Text(
-            widget.category,
+            category.category,
             // maxLines: 1,
             // overflow: TextOverflow.clip,
             style: const TextStyle(

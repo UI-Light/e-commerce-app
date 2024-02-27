@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
 
 class AllItems extends StatelessWidget {
@@ -12,39 +13,8 @@ class AllItems extends StatelessWidget {
         mainAxisSpacing: 10,
         crossAxisCount: 2,
       ),
-      children: const [
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/lipstick.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/makeup.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
-        ProductsBox(
-            productName: "Garnier Facewash",
-            price: "\$300",
-            image: 'assets/skincare.png'),
+      children: [
+        for (final product in Product.products) ProductsBox(product: product)
       ],
     );
   }
