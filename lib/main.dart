@@ -9,8 +9,21 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: IndexPage(),
+    return MaterialApp(
+      home: const IndexPage(),
+      theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            elevation: const MaterialStatePropertyAll(0.0),
+            minimumSize: const MaterialStatePropertyAll<Size>(Size(160, 40)),
+            shape: MaterialStatePropertyAll<OutlinedBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
