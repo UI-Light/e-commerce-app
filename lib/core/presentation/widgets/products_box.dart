@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
 import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class ProductsBox extends StatefulWidget {
-  final String productName;
-  final String price;
-  final String image;
+  final Product product;
   final Color color;
 
   const ProductsBox({
     super.key,
-    required this.productName,
-    required this.price,
-    required this.image,
+    required this.product,
     this.color = Palette.categoryBoxBg,
   });
 
@@ -38,7 +35,9 @@ class _ProductsBoxState extends State<ProductsBox> {
         children: [
           GestureDetector(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ProductDetailsPage())),
+                builder: (context) => ProductDetailsPage(
+                      product: widget.product,
+                    ))),
             child: Container(
               height: MediaQuery.of(context).size.height / 7,
               width: MediaQuery.of(context).size.width / 2.3,
@@ -47,7 +46,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                 color: widget.color,
                 image: DecorationImage(
                   image: AssetImage(
-                    widget.image,
+                    widget.product.image,
                   ),
                   fit: BoxFit.contain,
                 ),
@@ -77,7 +76,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    widget.productName,
+                    widget.product.title,
                     style: const TextStyle(
                       fontSize: 12,
                     ),
@@ -85,7 +84,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                   const Stars(),
                 ],
               ),
-              Text(widget.price,
+              Text(widget.product.formattedPrice,
                   style: const TextStyle(color: Palette.blue, fontSize: 12)),
             ],
           ),

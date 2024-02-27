@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key});
+  const ProductDetailsPage({super.key, required this.product});
+  final Product product;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -61,7 +63,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Expanded(
                         child: Center(
                           child: Image.asset(
-                            'assets/perfume.png',
+                            widget.product.image,
                             height: MediaQuery.of(context).size.height / 2,
                             width: MediaQuery.of(context).size.width / 2,
                           ),
@@ -77,23 +79,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Garnier White Skincare',
-                          style: TextStyle(
+                          widget.product.title,
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Stars(size: 18),
+                        const Stars(size: 18),
                       ],
                     ),
                     const SizedBox(height: 4.0),
-                    const Text(
-                      '\$200.00',
-                      style: TextStyle(
+                    Text(
+                      widget.product.formattedPrice,
+                      style: const TextStyle(
                           color: Palette.blue,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
@@ -182,8 +184,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     const SizedBox(
                       height: 5.0,
                     ),
-                    const Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+                    Text(
+                      widget.product.description,
                       textAlign: TextAlign.justify,
                     ),
                     const SizedBox(height: 15),
