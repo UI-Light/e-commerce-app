@@ -62,7 +62,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ),
                       Expanded(
                         child: Center(
-                          child: Image.asset(
+                          child: Image.network(
                             widget.product.image,
                             height: MediaQuery.of(context).size.height / 2,
                             width: MediaQuery.of(context).size.width / 2,
@@ -82,11 +82,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          widget.product.title,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                        Container(
+                          // color: Colors.blue,
+                          width: MediaQuery.of(context).size.width / 2,
+
+                          child: Text(
+                            widget.product.title,
+                            maxLines: 3,
+                            overflow: TextOverflow.clip,
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const Stars(size: 18),

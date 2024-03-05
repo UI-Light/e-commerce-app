@@ -45,7 +45,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                 borderRadius: BorderRadius.circular(8),
                 color: widget.color,
                 image: DecorationImage(
-                  image: AssetImage(
+                  image: NetworkImage(
                     widget.product.image,
                   ),
                   fit: BoxFit.contain,
@@ -75,10 +75,15 @@ class _ProductsBoxState extends State<ProductsBox> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    widget.product.title,
-                    style: const TextStyle(
-                      fontSize: 12,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: Text(
+                      widget.product.title,
+                      overflow: TextOverflow.clip,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                   const Stars(),

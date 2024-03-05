@@ -20,6 +20,6 @@ class _Logger implements AppLogger {
 
   @override
   void log(Object? e) {
-    if (_showLogs) dev.log("$e");
+    if (_showLogs) dev.log('$scope: $e');
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/models/category_model.dart';
-import 'package:shopping_app/core/models/product_model.dart';
+import 'package:shopping_app/features/home/presentation/view_model/home_view_model.dart';
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
@@ -14,6 +14,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  HomeViewModel homeViewModel = HomeViewModel();
+
+  @override
+  void initState() {
+    homeViewModel.getPopularProducts();
+    homeViewModel.getNewArrivals();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,15 +122,19 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    for (final product in Product.products)
-                      ProductsBox(product: product)
-                  ],
-                ),
-              ),
+              ValueListenableBuilder(
+                  valueListenable: homeViewModel.productsNotifier,
+                  builder: (context, popularProducts, _) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (final product in popularProducts)
+                            ProductsBox(product: product)
+                        ],
+                      ),
+                    );
+                  }),
               const SizedBox(
                 height: 15,
               ),
@@ -141,15 +154,19 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    for (final product in Product.products)
-                      ProductsBox(product: product)
-                  ],
-                ),
-              ),
+              ValueListenableBuilder(
+                  valueListenable: homeViewModel.arrivalsNotifier,
+                  builder: (context, newArrivals, _) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (final product in newArrivals)
+                            ProductsBox(product: product)
+                        ],
+                      ),
+                    );
+                  }),
             ],
           ),
         ),
