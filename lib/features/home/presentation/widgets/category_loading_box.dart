@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/models/category_model.dart';
-import 'package:shopping_app/core/presentation/palette.dart';
 
-class CategoryBox extends StatelessWidget {
-  final Category category;
-  const CategoryBox({
-    super.key,
-    required this.category,
-  });
+class CategoryLoadingBox extends StatelessWidget {
+  const CategoryLoadingBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +14,15 @@ class CategoryBox extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: Palette.categoryBoxBg,
-              // image: DecorationImage(
-              //     image: AssetImage(category.image), fit: BoxFit.cover),
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 8.0),
-          Text(
-            category.name,
-            style: const TextStyle(
-              fontSize: 12,
-            ),
+          Container(
+            height: MediaQuery.of(context).size.height / 50,
+            width: MediaQuery.of(context).size.width / 5,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5), color: Colors.black),
           ),
         ],
       ),

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:get_it/get_it.dart';
 import 'package:shopping_app/core/data/api_client.dart';
+import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/utils/logger.dart';
 
@@ -31,6 +34,18 @@ class HomeRepository {
       return products;
     } else {
       throw Exception("Cannot load Products");
+    }
+  }
+
+  Future<List<Category>> getCategories() async {
+    final response = await _client.dio.get('products/categories');
+    _logger.log('This is the response :$response');
+    if (response.statusCode == 200) {
+      List<Category> categories = List<Category>.from(
+          response.data.map((category) => Category(name: category)));
+      return categories;
+    } else {
+      throw Exception("Cannot load categories");
     }
   }
 }
