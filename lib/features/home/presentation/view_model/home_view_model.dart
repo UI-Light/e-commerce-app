@@ -14,9 +14,26 @@ class HomeViewModel extends BaseViewModel {
   final ValueNotifier<List<Product>> _arrivalsNotifier = ValueNotifier([]);
   ValueNotifier<List<Product>> get arrivalsNotifier => _arrivalsNotifier;
 
+  final ValueNotifier<bool> _popularProductsloading = ValueNotifier(false);
+  ValueNotifier<bool> get popularProductsloading => _popularProductsloading;
+
+  final ValueNotifier<bool> _newArrivalsLoading = ValueNotifier(false);
+  ValueNotifier<bool> get newArrivalsLoading => _newArrivalsLoading;
+
+  bool get isLoadingArrivals => _newArrivalsLoading.value;
+  bool get isLoadingProducts => _popularProductsloading.value;
+
+  void setProductsLoading(bool val) {
+    _popularProductsloading.value = val;
+  }
+
+  void setArrivalsLoading(bool val) {
+    _newArrivalsLoading.value = val;
+  }
+
   Future<void> getPopularProducts() async {
     try {
-      setLoading(true);
+      setProductsLoading(true);
       final products = await GetIt.I<HomeRepository>().getPopularProducts();
       _productsNotifier.value = products;
     } catch (e) {
@@ -24,17 +41,17 @@ class HomeViewModel extends BaseViewModel {
       // this needs to be handled and shown in the UI.
       _logger.log(e);
     }
-    setLoading(false);
+    setProductsLoading(false);
   }
 
   Future<void> getNewArrivals() async {
     try {
-      setLoading(true);
+      setArrivalsLoading(true);
       final products = await GetIt.I<HomeRepository>().getNewArrivals();
       arrivalsNotifier.value = products;
     } catch (e) {
       _logger.log(e);
     }
-    setLoading(false);
+    setArrivalsLoading(false);
   }
 }
