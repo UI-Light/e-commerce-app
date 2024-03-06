@@ -4,6 +4,7 @@ import 'package:shopping_app/features/home/presentation/view_model/home_view_mod
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
+import 'package:shopping_app/features/home/presentation/widgets/product_loading_grid.dart';
 import '../widgets/category_box.dart';
 
 class HomePage extends StatefulWidget {
@@ -123,17 +124,23 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               ValueListenableBuilder(
-                  valueListenable: homeViewModel.productsNotifier,
-                  builder: (context, popularProducts, _) {
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (final product in popularProducts)
-                            ProductsBox(product: product)
-                        ],
-                      ),
-                    );
+                  valueListenable: homeViewModel.popularProductsloading,
+                  builder: (context, isLoadingProducts, _) {
+                    return isLoadingProducts
+                        ? const ProductLoadingGrid()
+                        : ValueListenableBuilder(
+                            valueListenable: homeViewModel.productsNotifier,
+                            builder: (context, popularProducts, _) {
+                              return SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    for (final product in popularProducts)
+                                      ProductsBox(product: product)
+                                  ],
+                                ),
+                              );
+                            });
                   }),
               const SizedBox(
                 height: 15,
@@ -155,17 +162,23 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               ValueListenableBuilder(
-                  valueListenable: homeViewModel.arrivalsNotifier,
-                  builder: (context, newArrivals, _) {
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (final product in newArrivals)
-                            ProductsBox(product: product)
-                        ],
-                      ),
-                    );
+                  valueListenable: homeViewModel.newArrivalsLoading,
+                  builder: (context, isLoadingArrivals, _) {
+                    return isLoadingArrivals
+                        ? const ProductLoadingGrid()
+                        : ValueListenableBuilder(
+                            valueListenable: homeViewModel.arrivalsNotifier,
+                            builder: (context, newArrivals, _) {
+                              return SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    for (final product in newArrivals)
+                                      ProductsBox(product: product)
+                                  ],
+                                ),
+                              );
+                            });
                   }),
             ],
           ),
