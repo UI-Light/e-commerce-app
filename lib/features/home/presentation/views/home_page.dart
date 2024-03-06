@@ -4,7 +4,7 @@ import 'package:shopping_app/features/home/presentation/view_model/home_view_mod
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
-import 'package:shopping_app/features/home/presentation/widgets/product_loading_grid.dart';
+import 'package:shopping_app/features/home/presentation/widgets/product_loading_listview.dart';
 import '../widgets/category_box.dart';
 
 class HomePage extends StatefulWidget {
@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   valueListenable: homeViewModel.popularProductsloading,
                   builder: (context, isLoadingProducts, _) {
                     return isLoadingProducts
-                        ? const ProductLoadingGrid()
+                        ? const ProductLoadingListView()
                         : ValueListenableBuilder(
                             valueListenable: homeViewModel.productsNotifier,
                             builder: (context, popularProducts, _) {
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                   valueListenable: homeViewModel.newArrivalsLoading,
                   builder: (context, isLoadingArrivals, _) {
                     return isLoadingArrivals
-                        ? const ProductLoadingGrid()
+                        ? const ProductLoadingListView()
                         : ValueListenableBuilder(
                             valueListenable: homeViewModel.arrivalsNotifier,
                             builder: (context, newArrivals, _) {
