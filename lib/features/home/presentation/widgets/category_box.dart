@@ -24,15 +24,17 @@ class CategoryBox extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 10,
                 width: MediaQuery.of(context).size.width / 5,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  color: Palette.categoryBoxBg,
-                  image: snapshot.hasData
-                      ? DecorationImage(
-                          image: NetworkImage(snapshot.data!),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
-                ),
+                    borderRadius: BorderRadius.circular(6),
+                    color: Palette.categoryBoxBg,
+                    image: snapshot.hasData
+                        ? DecorationImage(
+                            image: NetworkImage(snapshot.data!),
+                            fit: BoxFit.cover,
+                          )
+                        : const DecorationImage(
+                            image: AssetImage('assets/night.jpg'),
+                            fit: BoxFit.cover,
+                          )),
               );
             },
           ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/features/home/presentation/view_model/home_view_model.dart';
-import 'package:shopping_app/features/home/presentation/widgets/category_loading_box.dart';
 import 'package:shopping_app/features/home/presentation/widgets/category_loading_listview.dart';
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';

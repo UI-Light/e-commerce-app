@@ -27,10 +27,6 @@ class HomeViewModel extends BaseViewModel {
   final ValueNotifier<bool> _categoriesLoading = ValueNotifier(false);
   ValueNotifier<bool> get categoriesLoading => _categoriesLoading;
 
-  bool get isLoadingArrivals => _newArrivalsLoading.value;
-  bool get isLoadingProducts => _popularProductsloading.value;
-  bool get isLoadingCategories => _categoriesLoading.value;
-
   void setProductsLoading(bool val) {
     _popularProductsloading.value = val;
   }
