@@ -26,7 +26,7 @@ class CategoryBox extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                     color: Palette.categoryBoxBg,
-                    image: snapshot.hasData
+                    image: snapshot.hasData && snapshot.data != null
                         ? DecorationImage(
                             image: NetworkImage(snapshot.data!),
                             fit: BoxFit.cover,
