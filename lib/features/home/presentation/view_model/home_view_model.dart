@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' hide Category;
 import 'package:get_it/get_it.dart';
+import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/base_view_model.dart';
 import 'package:shopping_app/core/utils/logger.dart';
@@ -14,14 +15,17 @@ class HomeViewModel extends BaseViewModel {
   final ValueNotifier<List<Product>> _arrivalsNotifier = ValueNotifier([]);
   ValueNotifier<List<Product>> get arrivalsNotifier => _arrivalsNotifier;
 
+  final ValueNotifier<List<Category>> _categoriesNotifier = ValueNotifier([]);
+  ValueNotifier<List<Category>> get categoriesNotifier => _categoriesNotifier;
+
   final ValueNotifier<bool> _popularProductsloading = ValueNotifier(false);
   ValueNotifier<bool> get popularProductsloading => _popularProductsloading;
 
   final ValueNotifier<bool> _newArrivalsLoading = ValueNotifier(false);
   ValueNotifier<bool> get newArrivalsLoading => _newArrivalsLoading;
 
-  bool get isLoadingArrivals => _newArrivalsLoading.value;
-  bool get isLoadingProducts => _popularProductsloading.value;
+  final ValueNotifier<bool> _categoriesLoading = ValueNotifier(false);
+  ValueNotifier<bool> get categoriesLoading => _categoriesLoading;
 
   void setProductsLoading(bool val) {
     _popularProductsloading.value = val;
@@ -29,6 +33,10 @@ class HomeViewModel extends BaseViewModel {
 
   void setArrivalsLoading(bool val) {
     _newArrivalsLoading.value = val;
+  }
+
+  void setCategoriesLoading(bool val) {
+    _categoriesLoading.value = val;
   }
 
   Future<void> getPopularProducts() async {
@@ -53,5 +61,16 @@ class HomeViewModel extends BaseViewModel {
       _logger.log(e);
     }
     setArrivalsLoading(false);
+  }
+
+  Future<void> getCategories() async {
+    try {
+      setCategoriesLoading(true);
+      final products = await GetIt.I<HomeRepository>().getCategories();
+      _categoriesNotifier.value = products;
+    } catch (e) {
+      _logger.log(e);
+    }
+    setCategoriesLoading(false);
   }
 }

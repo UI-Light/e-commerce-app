@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/features/home/presentation/view_model/home_view_model.dart';
+import 'package:shopping_app/features/home/presentation/widgets/category_loading_listview.dart';
 import 'package:shopping_app/features/home/presentation/widgets/discount_box.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     homeViewModel.getPopularProducts();
     homeViewModel.getNewArrivals();
+    homeViewModel.getCategories();
     super.initState();
   }
 
@@ -85,15 +86,25 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    for (final category in Category.categories)
-                      CategoryBox(category: category)
-                  ],
-                ),
-              ),
+              ValueListenableBuilder(
+                  valueListenable: homeViewModel.categoriesLoading,
+                  builder: (context, isLoadingCategories, _) {
+                    return isLoadingCategories
+                        ? const CategoryLoadingListView()
+                        : ValueListenableBuilder(
+                            valueListenable: homeViewModel.categoriesNotifier,
+                            builder: (context, categoriesNotifier, _) {
+                              return SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    for (final category in categoriesNotifier)
+                                      CategoryBox(category: category)
+                                  ],
+                                ),
+                              );
+                            });
+                  }),
               const SizedBox(
                 height: 20,
               ),
