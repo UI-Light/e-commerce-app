@@ -10,8 +10,46 @@ class CategoryRepository {
   final ApiClient _client;
   late final _logger = getLogger(CategoryRepository);
 
-  Future<List<Product>> getAllItems() async {
-    final response = await _client.dio.get('products');
+  Future<List<Product>> getElectronicItems() async {
+    final response = await _client.dio.get('products/category/electronics');
+
+    if (response.statusCode == 200) {
+      List<Product> products = List<Product>.from(
+          response.data.map((product) => Product.fromJson(product)));
+      return products;
+    } else {
+      throw Exception("Failed to load Products");
+    }
+  }
+
+  Future<List<Product>> getJewellery() async {
+    final response = await _client.dio.get('products/category/jewelery');
+
+    if (response.statusCode == 200) {
+      List<Product> products = List<Product>.from(
+          response.data.map((product) => Product.fromJson(product)));
+      return products;
+    } else {
+      throw Exception("Failed to load Products");
+    }
+  }
+
+  Future<List<Product>> getMenClothes() async {
+    final response =
+        await _client.dio.get('products/category/men\'s%20clothing');
+
+    if (response.statusCode == 200) {
+      List<Product> products = List<Product>.from(
+          response.data.map((product) => Product.fromJson(product)));
+      return products;
+    } else {
+      throw Exception("Failed to load Products");
+    }
+  }
+
+  Future<List<Product>> getWomenClothes() async {
+    final response =
+        await _client.dio.get('products/category/women\'s%20clothing');
 
     if (response.statusCode == 200) {
       List<Product> products = List<Product>.from(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
-import 'package:shopping_app/features/category/presentation/widgets/all_items.dart';
-import 'package:shopping_app/features/category/presentation/widgets/best_deals.dart';
-import 'package:shopping_app/features/category/presentation/widgets/popular_items.dart';
+import 'package:shopping_app/features/category/presentation/widgets/electronics_tab.dart';
+import 'package:shopping_app/features/category/presentation/widgets/jewellery_tab.dart';
+import 'package:shopping_app/features/category/presentation/widgets/men_clothing_tab.dart';
+import 'package:shopping_app/features/category/presentation/widgets/women_clothing.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -18,7 +19,7 @@ class _CategoryPageState extends State<CategoryPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -71,13 +72,16 @@ class _CategoryPageState extends State<CategoryPage>
                 controller: _tabController,
                 tabs: const [
                   Tab(
-                    text: 'All Items',
+                    text: 'Electronics',
                   ),
                   Tab(
-                    text: 'Popular Items',
+                    text: 'Jewellery',
                   ),
                   Tab(
-                    text: 'Best Deals',
+                    text: 'Men Clothing',
+                  ),
+                  Tab(
+                    text: 'Women Clothing',
                   ),
                 ],
               ),
@@ -86,9 +90,10 @@ class _CategoryPageState extends State<CategoryPage>
                 child: TabBarView(
                   controller: _tabController,
                   children: const [
-                    AllItems(),
-                    PopularItems(),
-                    BestDeals(),
+                    ElectronicsTab(),
+                    JewelleryTab(),
+                    MenClothingTab(),
+                    WomenClothingTab(),
                   ],
                 ),
               ),
