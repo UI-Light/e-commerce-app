@@ -3,10 +3,8 @@ import 'package:shimmer/shimmer.dart';
 import 'package:shopping_app/features/home/presentation/widgets/product_loading_box.dart';
 
 class ItemsLoadingListView extends StatelessWidget {
-  final int itemCount;
   const ItemsLoadingListView({
     super.key,
-    required this.itemCount,
   });
 
   @override
@@ -15,7 +13,7 @@ class ItemsLoadingListView extends StatelessWidget {
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
         child: GridView.builder(
-          itemCount: itemCount,
+          itemCount: 6,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 6,
             mainAxisSpacing: 10,
