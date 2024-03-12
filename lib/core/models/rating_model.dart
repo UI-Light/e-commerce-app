@@ -9,7 +9,7 @@ class Rating {
 
   factory Rating.fromJson(Map<String, dynamic> data) {
     return Rating(
-      rate: data['rate'] as double,
+      rate: double.parse(data['rate'].toString()),
       count: data['count'] as int,
     );
   }

@@ -82,10 +82,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          // color: Colors.blue,
+                        SizedBox(
                           width: MediaQuery.of(context).size.width / 2,
-
                           child: Text(
                             widget.product.title,
                             maxLines: 3,
