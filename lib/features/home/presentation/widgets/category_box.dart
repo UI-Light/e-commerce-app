@@ -40,7 +40,7 @@ class CategoryBox extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            category.name,
+            '${category.name[0].toUpperCase()}${category.name.substring(1)}',
             style: const TextStyle(
               fontSize: 12,
             ),

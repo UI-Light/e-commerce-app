@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
-import 'package:shopping_app/features/category/presentation/view_model/category_view_model.dart';
+import 'package:shopping_app/features/category/presentation/view_model/category_products_viewmodel.dart';
+
 import 'package:shopping_app/features/category/presentation/widgets/items_loading_listview.dart';
 
 class CategoryProducts extends StatefulWidget {
@@ -13,7 +14,8 @@ class CategoryProducts extends StatefulWidget {
 }
 
 class _CategoryProductsState extends State<CategoryProducts> {
-  final CategoryViewModel categoryViewModel = CategoryViewModel();
+  final CategoryProductsViewModel categoryViewModel =
+      CategoryProductsViewModel();
 
   @override
   void initState() {
@@ -24,7 +26,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: categoryViewModel.productLoading,
+        valueListenable: categoryViewModel.productsLoading,
         builder: (context, isLoadingProducts, _) {
           return isLoadingProducts
               ? const ItemsLoadingListView()

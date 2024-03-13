@@ -14,6 +14,7 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   CategoryViewModel categoryViewModel = CategoryViewModel();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -58,12 +59,14 @@ class _CategoryPageState extends State<CategoryPage> {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(20)),
                               ),
-                              child: const TextField(
+                              child: TextField(
+                                controller: _controller,
                                 decoration: InputDecoration(
                                   hintText: "Search",
-                                  hintStyle: TextStyle(fontSize: 14),
-                                  suffixIcon: Icon(
-                                    Icons.search,
+                                  hintStyle: const TextStyle(fontSize: 14),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.search),
                                     color: Colors.black,
                                   ),
                                   border: InputBorder.none,
@@ -76,13 +79,11 @@ class _CategoryPageState extends State<CategoryPage> {
                               labelStyle: const TextStyle(fontSize: 13),
                               labelColor: Palette.blue,
                               unselectedLabelColor: Palette.tabUnselected,
-                              // padding: EdgeInsets.only(right: 20.0),
-                              // indicatorPadding: EdgeInsets.only(right: 20.0),
-                              // labelPadding: EdgeInsets.only(bottom: 8.0),
                               tabs: [
                                 for (final category in categories)
                                   Tab(
-                                    text: category.name,
+                                    text:
+                                        '${category.name[0].toUpperCase()}${category.name.substring(1)}',
                                   )
                               ],
                             ),
