@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shopping_app/core/data/repositories/image_repository.dart';
 import 'package:shopping_app/core/models/category_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
+import 'package:shopping_app/core/utils/title_case.dart';
 
 class CategoryBox extends StatelessWidget {
   final Category category;
@@ -40,7 +41,7 @@ class CategoryBox extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            '${category.name[0].toUpperCase()}${category.name.substring(1)}',
+            category.nameInTitleCase,
             style: const TextStyle(
               fontSize: 12,
             ),

@@ -14,6 +14,8 @@ class CategoryProductsViewModel extends BaseViewModel {
   ValueNotifier<List<Product>> get productsInCategoryNotifier =>
       _productsInCategoryNotifier;
 
+  List<Product> productsList = [];
+
   final ValueNotifier<bool> _productsLoading = ValueNotifier(false);
   ValueNotifier<bool> get productsLoading => _productsLoading;
 
@@ -26,6 +28,7 @@ class CategoryProductsViewModel extends BaseViewModel {
       setProductsLoading(true);
       final products =
           await GetIt.I<CategoryRepository>().getProductsForCategory(category);
+      productsList = products;
       productsInCategoryNotifier.value = products;
     } catch (e) {
       _logger.log(e);
@@ -34,14 +37,14 @@ class CategoryProductsViewModel extends BaseViewModel {
   }
 
   //write search logic inside this viewmodel
-  Future<List<Product>> search(String keyword) async {
+  void search(String keyword) async {
     List<Product> filteredItems = [];
 
-    for (int i = 0; i < productsInCategoryNotifier.value.length; i++) {
-      if (productsInCategoryNotifier.value[i].title.contains(keyword)) {
-        filteredItems.add(productsInCategoryNotifier.value[i]);
-      } else {}
+    for (int i = 0; i < productsList.length; i++) {
+      if (productsList[i].title.toLowerCase().contains(keyword.toLowerCase())) {
+        filteredItems.add(productsList[i]);
+      }
     }
-    return filteredItems;
+    productsInCategoryNotifier.value = [...filteredItems];
   }
 }

@@ -7,31 +7,50 @@ import 'package:shopping_app/features/category/presentation/widgets/items_loadin
 
 class CategoryProducts extends StatefulWidget {
   final Category category;
-  const CategoryProducts({super.key, required this.category});
+  final ValueNotifier<String> searchQuery;
+  const CategoryProducts(
+      {super.key, required this.category, required this.searchQuery});
 
   @override
   State<CategoryProducts> createState() => _CategoryProductsState();
 }
 
 class _CategoryProductsState extends State<CategoryProducts> {
-  final CategoryProductsViewModel categoryViewModel =
+  final CategoryProductsViewModel categoryProductsViewModel =
       CategoryProductsViewModel();
+
+  void _searchQueryListener() {
+    categoryProductsViewModel.search(widget.searchQuery.value);
+  }
 
   @override
   void initState() {
-    categoryViewModel.getProductsInCategory(widget.category);
+    print('init state called');
+    categoryProductsViewModel.getProductsInCategory(widget.category);
+    widget.searchQuery.addListener(_searchQueryListener);
+    if (widget.searchQuery.value.isNotEmpty) {
+      print('something else');
+      categoryProductsViewModel.search(widget.searchQuery.value);
+    }
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.searchQuery.removeListener(_searchQueryListener);
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: categoryViewModel.productsLoading,
+        valueListenable: categoryProductsViewModel.productsLoading,
         builder: (context, isLoadingProducts, _) {
           return isLoadingProducts
               ? const ItemsLoadingListView()
               : ValueListenableBuilder(
-                  valueListenable: categoryViewModel.productsInCategoryNotifier,
+                  valueListenable:
+                      categoryProductsViewModel.productsInCategoryNotifier,
                   builder: (context, products, _) {
                     return GridView.builder(
                       itemCount: products.length,

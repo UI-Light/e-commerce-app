@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
+import 'package:shopping_app/core/utils/title_case.dart';
 import 'package:shopping_app/features/category/presentation/view_model/category_view_model.dart';
 import 'package:shopping_app/features/category/presentation/widgets/category_products.dart';
 
@@ -15,6 +16,7 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   CategoryViewModel categoryViewModel = CategoryViewModel();
   final TextEditingController _controller = TextEditingController();
+  final ValueNotifier<String> _searchQuery = ValueNotifier('');
 
   @override
   void initState() {
@@ -65,7 +67,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                   hintText: "Search",
                                   hintStyle: const TextStyle(fontSize: 14),
                                   suffixIcon: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _searchQuery.value = _controller.text;
+                                    },
                                     icon: const Icon(Icons.search),
                                     color: Colors.black,
                                   ),
@@ -81,10 +85,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               unselectedLabelColor: Palette.tabUnselected,
                               tabs: [
                                 for (final category in categories)
-                                  Tab(
-                                    text:
-                                        '${category.name[0].toUpperCase()}${category.name.substring(1)}',
-                                  )
+                                  Tab(text: category.nameInTitleCase),
                               ],
                             ),
                             const SizedBox(height: 15),
@@ -98,6 +99,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                         for (final category in categories)
                                           CategoryProducts(
                                             category: category,
+                                            searchQuery: _searchQuery,
                                           ),
                                       ],
                                     );

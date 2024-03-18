@@ -11,15 +11,8 @@ class CategoryViewModel extends BaseViewModel {
   final ValueNotifier<List<Category>> _categoriesNotifier = ValueNotifier([]);
   ValueNotifier<List<Category>> get categoriesNotifier => _categoriesNotifier;
 
-  final ValueNotifier<bool> _productsLoading = ValueNotifier(false);
-  ValueNotifier<bool> get productLoading => _productsLoading;
-
   final ValueNotifier<bool> _categoriesLoading = ValueNotifier(false);
   ValueNotifier<bool> get categoriesLoading => _categoriesLoading;
-
-  void setProductsLoading(bool val) {
-    _productsLoading.value = val;
-  }
 
   void setCategoriesLoading(bool val) {
     _categoriesLoading.value = val;
