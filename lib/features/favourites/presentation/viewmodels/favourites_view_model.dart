@@ -6,19 +6,36 @@ import 'package:shopping_app/core/models/product_model.dart';
 
 class FavouritesViewModel {
   final StorageService _storageService = StorageService();
+
   final ValueNotifier<List<Product>> _favouriteProducts = ValueNotifier([]);
   ValueNotifier<List<Product>> get favouriteProducts => _favouriteProducts;
 
-  Future<void> addToFavourites(Product product, Product value) async {
-    await _storageService.add(product.id, jsonEncode(value));
+  final String key = 'products';
+
+  List<Product> getProducts() {
+    favouriteProducts.value = _storageService.getFavourites(key);
+    if (favouriteProducts.value == null) {
+      return [];
+    } else {
+      return favouriteProducts.value;
+    }
   }
 
-  Future<void> removeFromFavourites(Product product) async {
-    await _storageService.remove(product.id);
+  void addProducts(Product product) async {
+    final List<Product> favouriteList = getProducts();
+    favouriteList.add(product);
+    final updatedList = favouriteList.map((product) => product.toJson());
+    await _storageService.add(key, jsonEncode(favouriteList));
   }
 
-  Future<List<Product>> getFavourites(Product product) async {
-    favouriteProducts.value = await _storageService.getFavourites(product.id);
-    return favouriteProducts.value;
+  void removeProducts(Product product) {
+    final List<Product> favouriteList = getProducts();
+    for (int i = 0; i < favouriteList.length; i++) {
+      favouriteList.removeWhere((element) => element.id == product.id);
+    }
+    final updatedFavouritesList =
+        favouriteList.map((product) => product.toJson());
+    jsonEncode(updatedFavouritesList);
+    _storageService.remove(key);
   }
 }

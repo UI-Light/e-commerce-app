@@ -32,4 +32,16 @@ class Product {
         image: data['image'],
         rating: Rating.fromJson(data['rating']));
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      'title': title,
+      "price": price,
+      "description": description,
+      "category": category,
+      "image": image,
+      "rating": rating.toJson(),
+    };
+  }
 }

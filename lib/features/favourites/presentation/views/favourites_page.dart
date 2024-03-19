@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
 import 'package:shopping_app/features/favourites/presentation/viewmodels/favourites_view_model.dart';

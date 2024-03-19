@@ -1,23 +1,22 @@
 import 'dart:convert';
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 
 class StorageService {
   final storage = const FlutterSecureStorage();
-
-  Future<void> add(int key, String value) async {
-    await storage.write(key: key.toString(), value: value);
+  Future<void> add(String key, String value) async {
+    await storage.write(key: key, value: value);
   }
 
-  Future<void> remove(int key) async {
-    await storage.delete(key: key.toString());
+  Future<void> remove(String key) async {
+    await storage.delete(key: key);
   }
 
-  Future<List<Product>> getFavourites(int key) async {
-    final products = await storage.read(key: key.toString());
+  List<Product> getFavourites(String key) {
+    final products = storage.read(key: key);
 
-    List<Product> productList = List<Product>.from(jsonDecode(products!));
+    List<Product> productList =
+        List<Product>.from(jsonDecode(products.toString()));
     return productList;
   }
 }
