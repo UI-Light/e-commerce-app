@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
+import 'package:shopping_app/features/favourites/presentation/viewmodels/favourites_view_model.dart';
 import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class ProductsBox extends StatefulWidget {
@@ -20,10 +21,16 @@ class ProductsBox extends StatefulWidget {
 
 class _ProductsBoxState extends State<ProductsBox> {
   bool isClicked = false;
+  FavouritesViewModel favouritesViewModel = FavouritesViewModel();
 
-  void saveItem() {
+  void saveItem(Product product) {
     setState(() {
       isClicked = !isClicked;
+      if (isClicked == true) {
+        favouritesViewModel.addFavouriteProduct(product);
+      } else {
+        favouritesViewModel.removeFavouriteProduct(product);
+      }
     });
   }
 
@@ -57,7 +64,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      saveItem();
+                      saveItem(widget.product);
                     },
                     icon: Icon(
                       Icons.favorite,

@@ -1,22 +1,39 @@
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shopping_app/core/models/product_model.dart';
+import 'package:shopping_app/core/utils/logger.dart';
 
 class StorageService {
   final storage = const FlutterSecureStorage();
-  Future<void> add(String key, String value) async {
-    await storage.write(key: key, value: value);
+  String key = 'products';
+  final _logger = getLogger(StorageService);
+
+  Future<List<Product>> getProducts() async {
+    final favouriteProducts = await storage.read(key: key);
+    _logger.log(favouriteProducts);
+    if (favouriteProducts == null) {
+      return [];
+    } else {
+      final jsonDecodedList = List.from(jsonDecode(favouriteProducts));
+      final productList = jsonDecodedList.map((e) => Product.fromJson(e));
+      return productList.toList();
+    }
   }
 
-  Future<void> remove(String key) async {
-    await storage.delete(key: key);
+  Future<void> addProducts(Product model) async {
+    final List<Product> favouriteList = await getProducts();
+    favouriteList.add(model);
+    final updatedList =
+        favouriteList.map((product) => product.toJson()).toList();
+    //json encode my new list? - updatedList or favouriteList
+    await storage.write(key: key, value: jsonEncode(updatedList));
   }
 
-  List<Product> getFavourites(String key) {
-    final products = storage.read(key: key);
-
-    List<Product> productList =
-        List<Product>.from(jsonDecode(products.toString()));
-    return productList;
+  Future<void> removeProducts(Product product) async {
+    final List<Product> favouriteList = await getProducts();
+    favouriteList.removeWhere((element) => element.id == product.id);
+    final updatedList =
+        favouriteList.map((product) => product.toJson()).toList();
+    await storage.write(key: key, value: jsonEncode(updatedList));
   }
 }
