@@ -36,4 +36,13 @@ class StorageService {
         favouriteList.map((product) => product.toJson()).toList();
     await storage.write(key: key, value: jsonEncode(updatedList));
   }
+
+  Future<bool> doesProductExist(Product product) async {
+    final List<Product> favouriteProducts = await getProducts();
+    if (favouriteProducts.any((element) => element.id == product.id)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

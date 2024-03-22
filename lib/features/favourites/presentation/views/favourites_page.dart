@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
 import 'package:shopping_app/features/favourites/presentation/viewmodels/favourites_view_model.dart';
 
@@ -37,20 +36,24 @@ class _FavouritesPageState extends State<FavouritesPage> {
               ValueListenableBuilder(
                   valueListenable: favouritesViewModel.favouriteProducts,
                   builder: (context, favourites, _) {
-                    return Expanded(
-                      child: GridView.builder(
-                        itemCount: favourites.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisSpacing: 6,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 2,
-                        ),
-                        itemBuilder: (context, index) {
-                          return ProductsBox(product: favourites[index]);
-                        },
-                      ),
-                    );
+                    return favourites.isEmpty
+                        ? const Center(
+                            child: Text('No Saved Item yet!'),
+                          )
+                        : Expanded(
+                            child: GridView.builder(
+                              itemCount: favourites.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisSpacing: 6,
+                                mainAxisSpacing: 10,
+                                crossAxisCount: 2,
+                              ),
+                              itemBuilder: (context, index) {
+                                return ProductsBox(product: favourites[index]);
+                              },
+                            ),
+                          );
                   }),
             ],
           ),

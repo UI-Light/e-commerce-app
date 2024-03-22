@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/data/storage_service.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
@@ -20,18 +21,30 @@ class ProductsBox extends StatefulWidget {
 }
 
 class _ProductsBoxState extends State<ProductsBox> {
-  bool isClicked = false;
+  bool isFavoriteProduct = false;
   FavouritesViewModel favouritesViewModel = FavouritesViewModel();
+  StorageService storageService = StorageService();
+
+  Future<void> checkForProduct() async {
+    isFavoriteProduct = await storageService.doesProductExist(widget.product);
+    setState(() {});
+  }
 
   void saveItem(Product product) {
-    setState(() {
-      isClicked = !isClicked;
-      if (isClicked == true) {
-        favouritesViewModel.addFavouriteProduct(product);
-      } else {
-        favouritesViewModel.removeFavouriteProduct(product);
-      }
-    });
+    if (isFavoriteProduct == true) {
+      favouritesViewModel.removeFavouriteProduct(product);
+      isFavoriteProduct = false;
+    } else {
+      favouritesViewModel.addFavouriteProduct(product);
+      isFavoriteProduct = true;
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    checkForProduct();
+    super.initState();
   }
 
   @override
@@ -68,7 +81,7 @@ class _ProductsBoxState extends State<ProductsBox> {
                     },
                     icon: Icon(
                       Icons.favorite,
-                      color: isClicked ? Palette.blue : Colors.white,
+                      color: isFavoriteProduct ? Palette.blue : Colors.white,
                     ),
                   ),
                 ],

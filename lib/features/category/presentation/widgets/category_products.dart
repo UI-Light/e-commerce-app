@@ -25,11 +25,9 @@ class _CategoryProductsState extends State<CategoryProducts> {
 
   @override
   void initState() {
-    print('init state called');
     categoryProductsViewModel.getProductsInCategory(widget.category);
     widget.searchQuery.addListener(_searchQueryListener);
     if (widget.searchQuery.value.isNotEmpty) {
-      print('something else');
       categoryProductsViewModel.search(widget.searchQuery.value);
     }
     super.initState();
