@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_app/core/presentation/widgets/products_box.dart';
 import 'package:shopping_app/features/favourites/presentation/viewmodels/favourites_view_model.dart';
 
@@ -10,11 +11,9 @@ class FavouritesPage extends StatefulWidget {
 }
 
 class _FavouritesPageState extends State<FavouritesPage> {
-  FavouritesViewModel favouritesViewModel = FavouritesViewModel();
-
   @override
   void initState() {
-    favouritesViewModel.getFavouriteProducts();
+    context.read<FavouritesViewModel>().getFavouriteProducts();
     super.initState();
   }
 
@@ -34,7 +33,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
                 height: 20.0,
               ),
               ValueListenableBuilder(
-                  valueListenable: favouritesViewModel.favouriteProducts,
+                  valueListenable:
+                      context.read<FavouritesViewModel>().favouriteProducts,
                   builder: (context, favourites, _) {
                     return favourites.isEmpty
                         ? const Center(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/core/data/storage_service.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
@@ -22,20 +22,13 @@ class ProductsBox extends StatefulWidget {
 
 class _ProductsBoxState extends State<ProductsBox> {
   bool isFavoriteProduct = false;
-  FavouritesViewModel favouritesViewModel = FavouritesViewModel();
-  StorageService storageService = StorageService();
-
-  Future<void> checkForProduct() async {
-    isFavoriteProduct = await storageService.doesProductExist(widget.product);
-    setState(() {});
-  }
 
   void saveItem(Product product) {
     if (isFavoriteProduct == true) {
-      favouritesViewModel.removeFavouriteProduct(product);
+      context.read<FavouritesViewModel>().removeFavouriteProduct(product);
       isFavoriteProduct = false;
     } else {
-      favouritesViewModel.addFavouriteProduct(product);
+      context.read<FavouritesViewModel>().addFavouriteProduct(product);
       isFavoriteProduct = true;
     }
     setState(() {});
@@ -43,7 +36,7 @@ class _ProductsBoxState extends State<ProductsBox> {
 
   @override
   void initState() {
-    checkForProduct();
+    context.read<FavouritesViewModel>().checkForProduct(widget.product);
     super.initState();
   }
 
