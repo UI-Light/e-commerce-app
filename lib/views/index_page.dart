@@ -33,7 +33,7 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return Provider(
       create: (context) => FavouritesViewModel(),
       child: Scaffold(
         body: PageView(

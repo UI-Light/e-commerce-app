@@ -24,7 +24,7 @@ class _ProductsBoxState extends State<ProductsBox> {
   bool isFavoriteProduct = false;
 
   void saveItem(Product product) {
-    if (isFavoriteProduct == true) {
+    if (isFavoriteProduct) {
       context.read<FavouritesViewModel>().removeFavouriteProduct(product);
       isFavoriteProduct = false;
     } else {
@@ -34,9 +34,15 @@ class _ProductsBoxState extends State<ProductsBox> {
     setState(() {});
   }
 
+  Future<void> checkForProduct() async {
+    isFavoriteProduct = await context
+        .read<FavouritesViewModel>()
+        .checkForProduct(widget.product);
+  }
+
   @override
   void initState() {
-    context.read<FavouritesViewModel>().checkForProduct(widget.product);
+    checkForProduct();
     super.initState();
   }
 
