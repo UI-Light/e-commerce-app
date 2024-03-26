@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
+import 'package:shopping_app/core/utils/title_case.dart';
 import 'package:shopping_app/features/category/presentation/view_model/category_view_model.dart';
 import 'package:shopping_app/features/category/presentation/widgets/category_products.dart';
 
@@ -14,6 +15,8 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   CategoryViewModel categoryViewModel = CategoryViewModel();
+  final TextEditingController _controller = TextEditingController();
+  final ValueNotifier<String> _searchQuery = ValueNotifier('');
 
   @override
   void initState() {
@@ -58,12 +61,16 @@ class _CategoryPageState extends State<CategoryPage> {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(20)),
                               ),
-                              child: const TextField(
+                              child: TextField(
+                                controller: _controller,
                                 decoration: InputDecoration(
                                   hintText: "Search",
-                                  hintStyle: TextStyle(fontSize: 14),
-                                  suffixIcon: Icon(
-                                    Icons.search,
+                                  hintStyle: const TextStyle(fontSize: 14),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      _searchQuery.value = _controller.text;
+                                    },
+                                    icon: const Icon(Icons.search),
                                     color: Colors.black,
                                   ),
                                   border: InputBorder.none,
@@ -76,14 +83,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               labelStyle: const TextStyle(fontSize: 13),
                               labelColor: Palette.blue,
                               unselectedLabelColor: Palette.tabUnselected,
-                              // padding: EdgeInsets.only(right: 20.0),
-                              // indicatorPadding: EdgeInsets.only(right: 20.0),
-                              // labelPadding: EdgeInsets.only(bottom: 8.0),
                               tabs: [
                                 for (final category in categories)
-                                  Tab(
-                                    text: category.name,
-                                  )
+                                  Tab(text: category.nameInTitleCase),
                               ],
                             ),
                             const SizedBox(height: 15),
@@ -97,6 +99,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                         for (final category in categories)
                                           CategoryProducts(
                                             category: category,
+                                            searchQuery: _searchQuery,
                                           ),
                                       ],
                                     );

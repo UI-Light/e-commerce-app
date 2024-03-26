@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/data/storage_service.dart';
 import 'package:shopping_app/core/models/product_model.dart';
 import 'package:shopping_app/core/presentation/palette.dart';
 import 'package:shopping_app/core/presentation/widgets/stars.dart';
+import 'package:shopping_app/features/favourites/presentation/viewmodels/favourites_view_model.dart';
 import 'package:shopping_app/features/product_details/presentation/views/product_details_page.dart';
 
 class ProductsBox extends StatefulWidget {
@@ -19,12 +21,30 @@ class ProductsBox extends StatefulWidget {
 }
 
 class _ProductsBoxState extends State<ProductsBox> {
-  bool isClicked = false;
+  bool isFavoriteProduct = false;
+  FavouritesViewModel favouritesViewModel = FavouritesViewModel();
+  StorageService storageService = StorageService();
 
-  void saveItem() {
-    setState(() {
-      isClicked = !isClicked;
-    });
+  Future<void> checkForProduct() async {
+    isFavoriteProduct = await storageService.doesProductExist(widget.product);
+    setState(() {});
+  }
+
+  void saveItem(Product product) {
+    if (isFavoriteProduct) {
+      favouritesViewModel.removeFavouriteProduct(product);
+      isFavoriteProduct = false;
+    } else {
+      favouritesViewModel.addFavouriteProduct(product);
+      isFavoriteProduct = true;
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    checkForProduct();
+    super.initState();
   }
 
   @override
@@ -57,11 +77,11 @@ class _ProductsBoxState extends State<ProductsBox> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      saveItem();
+                      saveItem(widget.product);
                     },
                     icon: Icon(
                       Icons.favorite,
-                      color: isClicked ? Palette.blue : Colors.white,
+                      color: isFavoriteProduct ? Palette.blue : Colors.white,
                     ),
                   ),
                 ],

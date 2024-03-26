@@ -13,4 +13,11 @@ class Rating {
       count: data['count'] as int,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'rate': rate,
+      'count': count,
+    };
+  }
 }

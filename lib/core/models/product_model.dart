@@ -33,51 +33,15 @@ class Product {
         rating: Rating.fromJson(data['rating']));
   }
 
-  static List<Product> products = [
-    Product(
-        id: 1,
-        title: "Garnier Facewash",
-        price: 300.0,
-        description:
-            "'Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        category: "",
-        image: 'assets/lipstick.png',
-        rating: Rating(rate: 4.0, count: 230)),
-    Product(
-        id: 2,
-        title: "Garnier Facewash",
-        price: 300.0,
-        description:
-            "'Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        category: "",
-        image: 'assets/lipstick.png',
-        rating: Rating(rate: 4.0, count: 230)),
-    Product(
-        id: 3,
-        title: "Garnier Facewash",
-        price: 300.0,
-        description:
-            "'Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        category: "",
-        image: 'assets/lipstick.png',
-        rating: Rating(rate: 4.0, count: 230)),
-    Product(
-        id: 4,
-        title: "Garnier Facewash",
-        price: 300.0,
-        description:
-            "'Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        category: "",
-        image: 'assets/lipstick.png',
-        rating: Rating(rate: 4.0, count: 230)),
-    Product(
-        id: 5,
-        title: "Garnier Facewash",
-        price: 300.0,
-        description:
-            "'Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        category: "",
-        image: 'assets/lipstick.png',
-        rating: Rating(rate: 4.0, count: 230)),
-  ];
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      'title': title,
+      "price": price,
+      "description": description,
+      "category": category,
+      "image": image,
+      "rating": rating.toJson(),
+    };
+  }
 }
