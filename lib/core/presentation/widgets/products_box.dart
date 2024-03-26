@@ -31,7 +31,7 @@ class _ProductsBoxState extends State<ProductsBox> {
   }
 
   void saveItem(Product product) {
-    if (isFavoriteProduct == true) {
+    if (isFavoriteProduct) {
       favouritesViewModel.removeFavouriteProduct(product);
       isFavoriteProduct = false;
     } else {

@@ -12,8 +12,8 @@ class FavouritesViewModel {
     favouriteProducts.value = await _storageService.getProducts();
   }
 
-  Future<void> addFavouriteProduct(Product model) async {
-    await _storageService.addProducts(model);
+  Future<void> addFavouriteProduct(Product product) async {
+    await _storageService.addProducts(product);
     await getFavouriteProducts();
   }
 

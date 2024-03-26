@@ -20,9 +20,9 @@ class StorageService {
     }
   }
 
-  Future<void> addProducts(Product model) async {
+  Future<void> addProducts(Product product) async {
     final List<Product> favouriteList = await getProducts();
-    favouriteList.add(model);
+    favouriteList.add(product);
     final updatedList =
         favouriteList.map((product) => product.toJson()).toList();
     //json encode my new list? - updatedList or favouriteList
@@ -39,10 +39,6 @@ class StorageService {
 
   Future<bool> doesProductExist(Product product) async {
     final List<Product> favouriteProducts = await getProducts();
-    if (favouriteProducts.any((element) => element.id == product.id)) {
-      return true;
-    } else {
-      return false;
-    }
+    return favouriteProducts.any((element) => element.id == product.id);
   }
 }
