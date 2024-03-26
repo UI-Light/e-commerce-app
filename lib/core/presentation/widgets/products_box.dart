@@ -38,12 +38,13 @@ class _ProductsBoxState extends State<ProductsBox> {
     isFavoriteProduct = await context
         .read<FavouritesViewModel>()
         .checkForProduct(widget.product);
+    setState(() {});
   }
 
   @override
   void initState() {
-    checkForProduct();
     super.initState();
+    checkForProduct();
   }
 
   @override
