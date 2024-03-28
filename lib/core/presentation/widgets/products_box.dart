@@ -48,6 +48,14 @@ class _ProductsBoxState extends State<ProductsBox> {
   }
 
   @override
+  void didUpdateWidget(covariant ProductsBox oldWidget) {
+    if (oldWidget.product.id != widget.product.id) {
+      checkForProduct();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
