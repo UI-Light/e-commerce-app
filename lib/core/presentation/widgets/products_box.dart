@@ -13,7 +13,7 @@ class ProductsBox extends StatefulWidget {
   const ProductsBox({
     super.key,
     required this.product,
-    this.color = Palette.categoryBoxBg,
+    this.color = Colors.transparent,
   });
 
   @override
@@ -83,14 +83,26 @@ class _ProductsBoxState extends State<ProductsBox> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      saveItem(widget.product);
-                    },
-                    icon: Icon(
-                      Icons.favorite,
-                      color: isFavoriteProduct ? Palette.blue : Colors.white,
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
                     ),
+                    child: IconButton(
+                        onPressed: () {
+                          saveItem(widget.product);
+                        },
+                        icon: isFavoriteProduct
+                            ? const Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : const Icon(
+                                Icons.favorite_border_outlined,
+                                color: Colors.black,
+                              )),
                   ),
                 ],
               ),
