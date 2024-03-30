@@ -21,4 +21,8 @@ class FavouritesViewModel {
     await _storageService.removeProducts(product);
     await getFavouriteProducts();
   }
+
+  Future<bool> checkForProduct(Product product) async {
+    return await _storageService.doesProductExist(product);
+  }
 }
